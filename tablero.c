@@ -49,13 +49,31 @@ void cargar_tablero(Tablero *tablero)
     }
 }
 
+void reciclar_descarte(Tablero *tablero)
+{
+    Carta carta;
+
+    while(retirar_primero(&tablero->descarte, &carta) == 1)
+    {
+        carta.visible = 0;
+        insertar_inicio(&tablero->mazo, carta);
+    }
+}
+
 void avanzar_mazo(Tablero *tablero)
 {
     Carta carta;
 
     if(retirar_primero(&tablero->mazo, &carta) == 0)
     {
-        printf("\nNo quedan cartas en el mazo.\n");
+        if(tablero->descarte == NULL)
+        {
+            printf("\nNo quedan cartas en el mazo ni en el descarte.\n");
+            return;
+        }
+
+        reciclar_descarte(tablero);
+        printf("\nSe reciclo el descarte al mazo.\n");
         return;
     }
 
