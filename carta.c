@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "carta.h"
+#include "solitario.h"
 
 char letra_valor(int valor)
 {

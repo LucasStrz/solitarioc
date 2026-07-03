@@ -2,16 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "tablero.h"
-#include "entrada.h"
-#include "colores.h"
+#include "solitario.h"
 
 void esperar_enter(void)
 {
     char linea[4];
 
-    printf("\nPresione Enter para continuar...");
-    fgets(linea, sizeof(linea), stdin);
+    printf("\nPresione Enter...");
+    getchar();
 }
 
 void limpiar_pantalla(void)

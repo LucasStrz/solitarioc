@@ -1,14 +1,3 @@
-#define NEGRO "\x1b[30m"
-#define ROJO "\x1b[31m"
-#define VERDE "\x1b[32m"
-#define AMARILLO "\x1b[33m"
-#define AZUL "\x1b[34m"
-#define MAGENTA "\x1b[35m"
-#define CIAN "\x1b[36m"
-#define RESET "\x1b[0m"
-
-#define FONDO_CONSOLA "20"
-
 typedef struct Carta
 {
     int valor;
@@ -42,21 +31,25 @@ typedef struct Accion
     int fila_destino;
 } Accion;
 
-char letra_valor(int valor);
-
 Nodo *crear_nodo(Carta carta);
+
 void insertar_inicio(Nodo **lista, Carta carta);
 void insertar_final(Nodo **lista, Carta carta);
+
 int retirar_primero(Nodo **lista, Carta *carta);
 int retirar_posicion(Nodo **lista, int posicion, Carta *carta);
+
 int cantidad_lista(Nodo *lista);
+
 Nodo *obtener_nodo(Nodo *lista, int posicion);
+
 void liberar_lista(Nodo **lista);
+
 void generar_mazo(Nodo **mazo);
 
 void inicializar_tablero(Tablero *tablero);
 void cargar_tablero(Tablero *tablero);
-int avanzar_mazo(Tablero *tablero);
+void avanzar_mazo(Tablero *tablero);
 void imprimir_tablero(Tablero *tablero);
 void liberar_tablero(Tablero *tablero);
 
@@ -65,3 +58,7 @@ void convertir_mayusculas(char texto[]);
 int interpretar_accion(char texto[], Accion *accion);
 void imprimir_accion(Accion accion);
 
+void configurar_consola(void);
+void limpiar_consola(void);
+void imprimir_rojo(void);
+void imprimir_negro(void);

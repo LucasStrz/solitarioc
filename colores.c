@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "colores.h"
+#include "solitario.h"
 
 void configurar_consola(void)
 {

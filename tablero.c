@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "tablero.h"
-#include "colores.h"
+#include "solitario.h"
 
 void inicializar_tablero(Tablero *tablero)
 {
@@ -72,7 +71,7 @@ void imprimir_carta(Carta carta)
     if(carta.visible == 0)
     {
         imprimir_negro();
-        printf("#  ");
+        printf("## ");
         return;
     }
 
@@ -93,7 +92,7 @@ void imprimir_tope(Nodo *lista)
 {
     if(lista == NULL)
     {
-        printf("#  ");
+        printf("## ");
     }
     else
     {

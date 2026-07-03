@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "entrada.h"
+#include "solitario.h"
 
 int es_columna(char letra)
 {
