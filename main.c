@@ -6,9 +6,14 @@
 
 void esperar_enter(void)
 {
-    char linea[4];
+    int c;
 
     printf("\nPresione Enter...");
+
+    while((c = getchar()) != '\n' && c != EOF)
+    {
+    }
+
     getchar();
 }
 
@@ -25,7 +30,7 @@ int main(void)
     int continuar;
 
     configurar_consola();
-    srand((unsigned int)time(NULL));
+    srand(time(NULL));
     inicializar_tablero(&tablero);
     cargar_tablero(&tablero);
     continuar = 1;
@@ -36,7 +41,7 @@ int main(void)
         imprimir_tablero(&tablero);
         printf("Jugada: ");
 
-        if(fgets(jugada, sizeof(jugada), stdin) == NULL)
+        if(scanf("%29s", jugada) != 1)
         {
             break;
         }
@@ -50,20 +55,20 @@ int main(void)
         }
         else if(interpretar_accion(jugada, &accion) == 0)
         {
-            printf("\nJugada invalida. Ejemplos: M, M-P, P-A4, M-A2, B3-G7.\n");
+            printf("\nJugada invalida.\n");
             esperar_enter();
         }
         else if(accion.tipo == 1)
 		{
 		    avanzar_mazo(&tablero);
-		    esperar_enter();
 		}
 		else
 		{
-		    printf("\n");
-		    imprimir_accion(accion);
-		    /*printf("Este comando ya fue interpretado. El movimiento con validaciones se agrega en la siguiente fase.\n");*/
-		    esperar_enter();
+		    if(realizar_movimiento(&tablero, accion)== 0)
+            {
+                printf("\nJugada invalida.\n");
+                esperar_enter();
+            }
 		}
     }
 

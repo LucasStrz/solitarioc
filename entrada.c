@@ -102,6 +102,8 @@ int leer_area(char texto[], int *indice, char *area, int *fila)
 int interpretar_accion(char texto[], Accion *accion)
 {
     int indice;
+    char origen[15];
+    char destino[15];
 
     quitar_salto(texto);
     convertir_mayusculas(texto);
@@ -116,26 +118,31 @@ int interpretar_accion(char texto[], Accion *accion)
         return 1;
     }
 
+    if(sscanf(texto, "%14[^-]-%14s", origen, destino) != 2)
+    {
+        return 0;
+    }
+
     indice = 0;
 
-    if(leer_area(texto, &indice, &accion->origen, &accion->fila_origen) == 0)
+    if(leer_area(origen, &indice, &accion->origen, &accion->fila_origen) == 0)
     {
         return 0;
     }
 
-    if(texto[indice] != '-')
+    if(origen[indice] != '\0')
     {
         return 0;
     }
 
-    indice++;
+    indice = 0;
 
-    if(leer_area(texto, &indice, &accion->destino, &accion->fila_destino) == 0)
+    if(leer_area(destino, &indice, &accion->destino, &accion->fila_destino) == 0)
     {
         return 0;
     }
 
-    if(texto[indice] != '\0')
+    if(destino[indice] != '\0')
     {
         return 0;
     }

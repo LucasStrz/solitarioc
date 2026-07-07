@@ -50,6 +50,7 @@ void generar_mazo(Nodo **mazo);
 void inicializar_tablero(Tablero *tablero);
 void cargar_tablero(Tablero *tablero);
 void avanzar_mazo(Tablero *tablero);
+int realizar_movimiento(Tablero *tablero, Accion accion);
 void imprimir_tablero(Tablero *tablero);
 void liberar_tablero(Tablero *tablero);
 
